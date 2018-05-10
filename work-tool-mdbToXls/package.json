@@ -1,0 +1,24 @@
+{
+  "name": "test",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "dependencies": {
+    "async": "^2.6.0",
+    "cheerio": "^1.0.0-rc.2",
+    "colors": "^1.2.1",
+    "exceljs": "^1.2.1",
+    "fs": "^0.0.1-security",
+    "inquirer": "^5.2.0",
+    "node-adodb": "^4.0.9",
+    "superagent": "^3.8.2",
+    "xlsx": "^0.12.8",
+    "yargs": "^11.0.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
