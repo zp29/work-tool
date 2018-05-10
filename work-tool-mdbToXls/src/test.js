@@ -15,6 +15,7 @@ connection
   .query('SELECT * FROM Content')
   // databases ->  **Content** &&  DownloadFile
   .then(data => {
+    console.log(data);
 
     for( let key in data[0] ){
       rowName.push({
