@@ -4,6 +4,8 @@ const cheerio = require('cheerio')
 const fs = require('fs')
 const async = require('async')
 
+let start = 20180511100001
+let id = 1
 let urls = [
   'https://www.fitflop.com/uk/en/shop/womens-view-all-uk/superskate-d-orsay-leather-loafers-p-K97-535',
   'https://www.fitflop.com/uk/en/shop/womens-view-all-uk/superskate-leather-loafers-p-K20-536',
@@ -116,27 +118,33 @@ function getData(api, url, callback){
   superagent
     .get(api)
     .end((err, res) => {
+      let num = 1
       if (err) { return err }
       let data = JSON.parse(res.text)
+      let pid = id++
       let link = url
       let title = data.name + data.description
       let desc = data.summary
       let price = data.prices
-      let attr = data.variationFields[0].values.toString().replace(',', '|')
+      let attr = data.variationFields[0].values.toString().replace(/,/g, '|')
+      let mainName = start + '.jpg'
       let main = data.imageSet.items[0].src
       let vices = data.imageSet.items
       let vice = ''
+      let ViceName = ''
       for (var i = 1; i < vices.length; i++) {
-        vice += vices[i].src + '.jpg|'
+        vice += vices[i].src + '|'
+        ViceName += start + '_' + i + '.jpg|'
       }
       JsonData.push({
-        link,title,desc,price,attr,main,vice
+        pid,link,title,desc,price,attr,main,vice,mainName,ViceName
       })
       fs.writeFile('data/fitflop.json', '',  function(err) {
         fs.writeFileSync('data/fitflop.json', JSON.stringify(JsonData) )
         if (err) { return console.log(`写入失败...${err}`); }
         console.log( url + ' ok!' );
-        callback();
+        start++;
+        // callback();
       })
 
     })
