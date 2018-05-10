@@ -4,7 +4,7 @@ const cheerio = require('cheerio')
 const fs = require('fs')
 const async = require('async')
 
-let start = 20180511100001
+let start = 20180512100001
 let id = 1
 let urls = [
   'https://www.fitflop.com/uk/en/shop/womens-view-all-uk/superskate-d-orsay-leather-loafers-p-K97-535',
@@ -115,6 +115,7 @@ async.mapLimit( urls, 5, (url, callback) => {
 })
 
 function getData(api, url, callback){
+  console.log(api);
   superagent
     .get(api)
     .end((err, res) => {
@@ -134,21 +135,18 @@ function getData(api, url, callback){
       let ViceName = ''
       for (var i = 1; i < vices.length; i++) {
         vice += vices[i].src + '|'
-        ViceName += start + '_' + i + '.jpg|'
+        ViceName += start++ + '_' + i + '.jpg|'
       }
       JsonData.push({
         pid,link,title,desc,price,attr,main,vice,mainName,ViceName
       })
-      fs.writeFile('data/fitflop.json', '',  function(err) {
-        fs.writeFileSync('data/fitflop.json', JSON.stringify(JsonData) )
+      fs.writeFile('./data/fitflop.json', '',  function(err) {
+        fs.writeFileSync('./data/fitflop.json', JSON.stringify(JsonData) )
         if (err) { return console.log(`写入失败...${err}`); }
         console.log( url + ' ok!' );
-        start++;
-        // callback();
+        callback();
       })
-
     })
-
 }
 
 
