@@ -18,8 +18,6 @@ const XLSX = require('xlsx')
  */
 exports.makeXls = ( data, fileName ) => {
 
-  console.log(data);
-
   var workbook = new Excel.stream.xlsx.WorkbookWriter({
     filename: `./data/${fileName}`
   });
