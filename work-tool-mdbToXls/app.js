@@ -2,18 +2,34 @@ const api = require('./src/api.js')
 // 操作 api 对象
 const ADODB = require('node-adodb')
 // 读取 mdb 模块
+var sql = require('sql.js');
+// 读取 db3 file
 const colors = require('colors')
 const yargs = require('yargs').argv
+const fs = require('fs')
 
 const filter = require('./src/filter.js')
 const html = require('./src/html.js')
 const download = require('./src/download.js')
 const xls = require('./src/xls.js')
+const getData = require('./src/getdata.js')
 
+ 
 // 打开 .mdb 文件
-const connection = ADODB.open(`Provider=Microsoft.Jet.OLEDB.4.0;Data Source='${api.mdb}';`)
 
 if ( yargs.start ) {
+  if ( yargs.db3 ) {
+
+    let data = getData.getDb3Data()
+    for( let val of data ){
+      filter.FilterDownloadHtml(val)
+      filter.filterJsonXls(val)
+    }
+    html.addHtml()
+    xls.makeXls(data, 'data.xlsx')
+
+  }else {
+  const connection = ADODB.open(`Provider=Microsoft.Jet.OLEDB.4.0;Data Source='${api.mdb}';`)
   connection
     .query('SELECT * FROM Content')
     .then(data => {
@@ -35,7 +51,7 @@ if ( yargs.start ) {
       // xlsx -> xls
     })
     .catch(error => { console.error(error); });
-} else {
+}} else {
   console.log(' No start !'.red);
 }
 if ( yargs.download ) {

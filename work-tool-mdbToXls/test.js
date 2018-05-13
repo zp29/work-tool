@@ -12,7 +12,7 @@
 //   }
 
 var fs = require('fs');    
-var sql = require('sql.js');    
+var sql = require('sql.js');
 var bfr = fs.readFileSync('./mdb/test.db3');
 
 var db = new sql.Database(bfr);
