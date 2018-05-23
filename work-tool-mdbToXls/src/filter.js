@@ -24,7 +24,7 @@ exports.FilterDownloadHtml = (key) => {
     main = !main.indexOf('http://http://') ? main.replace('http://http://','http://') : main
     // htpps ? https->http : +'http'
     api.html.main.push(`<a href="${main}\n">img</a>`)
-
+    vice = vice.replace(/###/g,'|')
     vice = !vice.indexOf('https://') ? httpsFilter() : addHttp()
     // https ? https->htp : + 'http'
 
@@ -65,32 +65,33 @@ exports.filterJsonXls = ( key ) => {
   // 最后一个 '|' 后面的值  => 文件名
 
   let tempVice = ''
-  for( let arr of vice.split('|') ){
-    tempVice += arr && arr.slice(arr.lastIndexOf('/')+1, arr.length) + '|'
+  for( let arr of vice.split('###') ){
+    tempVice += arr && arr.slice(arr.lastIndexOf('/')+1, arr.length) + '###'
   }
-  vice = tempVice.slice(0, tempVice.lastIndexOf('|'))
+  vice = tempVice.slice(0, tempVice.lastIndexOf('###'))
   // 最后一个 '|' 后面的值  => 文件名
 
   if ( main.indexOf('?') != -1 ) {
     let tempVice = ''
     main = main.slice(0, main.indexOf('?'))
-    for( let viceArr of vice.split('|') ){
-      tempVice += viceArr && viceArr.slice(0, viceArr.indexOf('?')) + '|'
+    for( let viceArr of vice.split('###') ){
+      tempVice += viceArr && viceArr.slice(0, viceArr.indexOf('?')) + '###'
     }
-    vice = tempVice.slice(0, tempVice.lastIndexOf('|'))
+    vice = tempVice.slice(0, tempVice.lastIndexOf('###'))
   }
   // 去除 ? 后面的选项字符
 
-  if ( main == vice.slice(0, vice.indexOf('|')) ) {
-    vice = vice.slice(vice.indexOf('|')+1, vice.length)
+  if ( main == vice.slice(0, vice.indexOf('###')) ) {
+    vice = vice.slice(vice.indexOf('###')+1, vice.length)
   }
-
+  main = main.replace(/###/g,'|')
+  vice = vice.replace(/###/g,'|')
   if ( key.主图 || key.详细图 ){ key.主图 = main; key.详细图 = vice }
   if ( key.Main || key.Vice ){ key.Main = main; key.Vice = vice }
   if ( !key.主图 && !key.Main  ) {
-    key.主图 = vice.slice(0, vice.indexOf('|'));
-    if ( key.主图 == vice.slice(0, vice.indexOf('|')) ) {
-      vice = vice.slice(vice.indexOf('|')+1, vice.length)
+    key.主图 = vice.slice(0, vice.indexOf('###'));
+    if ( key.主图 == vice.slice(0, vice.indexOf('###')) ) {
+      vice = vice.slice(vice.indexOf('###')+1, vice.length)
     }
     key.详细图 = vice
   }

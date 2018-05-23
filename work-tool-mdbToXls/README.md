@@ -6,15 +6,17 @@
   npm i
   // 安装依赖
   
-  node app.js
+  node app.js --start --file='test' --mdb
+  node app.js --start --file='test' --db3
   // mdb -> xls
+  // --file 文件名不带后缀
+  // --mdb && --db3 文件类型
 
   node app.js --download 
+  // 确保文件夹下有 main.html && vice.html 文件
   // mdb -> xls 自动下载图片
-
-  node app.js --file="FileName.mdb"
-  // point a .mdb file
-
+  // 图片丢失请使用快车下载
+  
 ```
 
 ### 功能
