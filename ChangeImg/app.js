@@ -1,9 +1,9 @@
 
-const sharp = require('sharp')
+const gm = require('gm')
+const fs = require('fs')
 
-sharp('./img/wallhaven-460536.png')
-  .resize(600, 600)
-  .toFile('output.jog', (err, info) =>{
-    err || console.log(errr)
-    console.log(info)
-  })
+gm('./img/wallhaven-460536.png')
+  .resize(240, 240, '!')
+  .write('./img/test.png', function (err) {
+    if (!err) console.log('ok');
+  });
