@@ -8,6 +8,8 @@ const api = require('./api.js')
 exports.FilterDownloadHtml = (key) => {
     let main = key.主图 || key.Main || '', vice = key.详细图 || key.Vice || ''
     // 拿到中英文状态下数据 
+    
+    vice = vice.replace(/###/g, '|')
   
     if ( main && main.indexOf('?') != -1 ) {
       main = main.slice(0, main.indexOf('?'))
@@ -62,6 +64,7 @@ exports.filterJsonXls = ( key ) => {
   let main = key.主图 || key.Main || '',vice = key.详细图 || key.Vice || ''
 
   main = main.slice(main.lastIndexOf('/')+1, main.length)
+  vice = vice.replace(/###/g, '|')
   // 最后一个 '|' 后面的值  => 文件名
 
   let tempVice = ''

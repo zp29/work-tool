@@ -20,7 +20,7 @@ const getData = require('./src/getdata.js')
 if ( yargs.start ) {
   if ( yargs.db3 ) {
 
-    let data = getData.getDb3Data()
+    let data = getData.getDb3Data(api.mdb)
     for( let val of data ){
       filter.FilterDownloadHtml(val)
       filter.filterJsonXls(val)

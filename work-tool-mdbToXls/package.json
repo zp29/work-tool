@@ -19,8 +19,8 @@
   "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "db3":"devtool app.js --start --db3 --watch",
-    "mdb":"devtool app.js --start --watch"
+    "db3": "devtool app.js --start --db3 --watch",
+    "mdb": "devtool app.js --start --watch"
   },
   "author": "",
   "license": "ISC"

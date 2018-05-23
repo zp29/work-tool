@@ -5,7 +5,12 @@ yargs.file = yargs.file || 'test'
 yargs.src = yargs.src || './src/'
 yargs.dist = yargs.dist || `./data/`
 
-const mdbFile = yargs.db3 ? `./mdb/${yargs.file}.db3`  : `./mdb/${yargs.file}.mdb`
+const file = []
+for(let v of yargs.file.split(',')){
+  file.push(`./mdb/${v}.db3`)
+}
+
+const mdbFile = yargs.db3 ? file : file
 
 const api = {
   mdb: mdbFile,
