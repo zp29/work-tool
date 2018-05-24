@@ -1,4 +1,81 @@
+/* This is the garbage code I wrote */
 const argv = require('yargs').argv
+const {exec} = require('child_process')
+
+const text = {
+  // dist/ 待上线网站
+  acom: [
+    'martasian.site',
+    'acmartine.top',
+    'akmartin.pw',
+    'ghdomue.site',
+    'frairghd.site',
+    'wonderinghd.site'
+  ],
+  ip: [
+    '104.223.132.61',
+    '104.223.140.125',
+    '104.223.135.29',
+    '104.223.136.157',
+    '104.223.135.30',
+    '104.223.136.158'
+  ],
+  // src/ 数据网站
+  bcom: [
+    'solamonpink.pw',
+    'solomenalert.pw',
+    'solomonmodel.pw',
+    'selomanpure.pw',
+    'solomenalert.pw',
+    'solomonmodel.pw'
+  ],
+  zc: [
+    'ZC37',
+    'ZC31',
+    'ZC18',
+    'ZC38',
+    'ZC31',
+    'ZC18'
+  ]
+}
+
+let str = ''
+if( argv.txt ){
+  const passwd = 'TRwq*Aj9Pb'
+  for(let key in text.acom){
+str += `${text.acom[key]}
+${text.ip[key]}\n`
+  }
+  str += `------***------\n`
+  for(let v of text.acom){
+    str += `${v.slice(0, v.indexOf('.'))}\n`
+  }
+  str += `------***------\n`
+  for(let key in text.acom){
+    str += `node copy --a='${text.bcom[key]}' --b='${text.acom[key]}' --ap='${passwd}' \n`
+  }
+  str += `------***------\n`
+  for(let v of text.acom){
+    str += `/www/web/${v.replace('.','_')}/public_html/tempEP \n`
+  }
+  str += `------***------\n`
+  for(let key in text.acom){
+    let path = text.zc[key]
+    path = path.replace('ZC37', 'marqet/images/slideshow/')
+    path = path.replace('ZC38', 'magnus/images/slideshow/')
+    path = path.replace('ZC36', 'edify/images/slideshow/')
+    path = path.replace('ZC18', 'zc18/images/banner/')
+    path = path.replace('ZC31', 'zc18/images/')
+    path = path.replace('ZC39', 'bohase/images/slideshow/')
+    path = path.replace('ZC29', 'zc18/images/')
+    path = path.replace('ZC32', 'zc18/images/')
+    path = path.replace('ZC35', 'zenshoppe/images/slideshow/')
+    str += `/www/web/${text.acom[key].replace('.','_')}/public_html/includes/templates/${path}\n`
+  }
+  console.log(str);
+  exec('clip').stdin.end(str);
+
+}else {
 
 const aHeaderName = argv.a.slice(0, argv.a.indexOf('.'))
 const aFooterName = argv.a.slice(argv.a.indexOf('.')+1, argv.a.length)
@@ -12,9 +89,6 @@ const bDBanem = argv.bdb || bHeaderName.replace('-','_')
 const aPasswd = argv.ap
 const bPasswd = argv.bp || argv.ap
 
-const {exec} = require('child_process');
-
-let str = ''
 if( argv.bat ){
   // 打包
   str = `cd /www/web/${aHeaderName}_${aFooterName}/public_html && 
@@ -118,8 +192,7 @@ else if( argv.export ){
   sed -i 's/${aPasswd}/${bPasswd}/g' /www/web/${bHeaderName}_${bFooterName}/public_html/biubiu/includes/configure.php
   `
 }
-
 exec('clip').stdin.end(str.replace(/\n/g, ''));
+}
 
 // console.log(  );
->>>>>>> 529acc1e13f07d7b80c73dbc58233e5e75d54a1d
