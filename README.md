@@ -9,25 +9,47 @@
 
 #### 技术栈
 
-  - **node-adodb** -> **read .mdb file**
+  - **node-adodb**
 
-  - async -> download imgs async
+    > 读取 .mdb 文件 
+    >
+    > *read .mdb file** 
 
-  - fs -> file ...
+  - async
 
-  - superagent -> get ....
+    > 异步下载图片
 
-  - cheerio -> Node jQuery
+    >  download imgs async
 
-  - yargs -> cmd option
+  - fs
 
-  - xlsx -> xlsx to xls
+  - superagent
 
-  - exceljs -> josn to xlsx
+  - cheerio
 
-  - **sql.js** -> **read .db3 file**
+    > Node jQuery
 
-    > 5.12 新增
+  - yargs
+
+    > 命令行选项
+
+    > cmd option
+
+  - xlsx
+
+    > xlsx to xls
+
+  - exceljs
+
+    > josn to xlsx
+
+  - **sql.js**
+
+    > 读取 db3 文件
+    >
+    > **read .db3 file**
+    >
+    > add - 5.12
 
 ---
 
