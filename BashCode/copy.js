@@ -1,40 +1,132 @@
+
 /* This is the garbage code I wrote */
+
+
+/**
+ * Time : 2018 - 5
+ * By : zp-29
+ */
+
 const argv = require('yargs').argv
 const {exec} = require('child_process')
 
 const text = {
   // dist/ 待上线网站
   acom: [
-    'martasian.site',
-    'acmartine.top',
-    'akmartin.pw',
-    'ghdomue.site',
-    'frairghd.site',
-    'wonderinghd.site'
+    'mereltrainershoes.pw',
+    'merhikingshoes.pw',
+    'merrashoesf.pw',
+    'mellrwalkshoess.pw',
+    'merallshoesq.top',
+    'merraloutshoes.top',
+    'mellrwalkshoese.top',
+    'vibmfiveshoesa.top',
+    'vibmfiveshoesfv.top',
+    'vibmfinsneakersrt.top',
+    'vbrmtrainersshoes.top',
+    'vibsneakers.top',
+    'vrbmfinshoesa.top',
+    'vrbmfershoesc.top',
+    'vbemfershoesu.top',
+    'demartinal.top',
+    'eumartin.pw',
+    'ermartenal.top',
+    'frmartin.pw',
+    'ismartim.site',
+    'lemartin.pw',
+    'oamartina.top',
+    'goodhair.site',
+    'astraightener.top',
+    'straightenerghde.top',
+    'urstraightener.top',
+    'ironalltin.site'
   ],
   ip: [
-    '104.223.132.61',
-    '104.223.140.125',
-    '104.223.135.29',
-    '104.223.136.157',
-    '104.223.135.30',
-    '104.223.136.158'
+    '185.212.172.226',
+    '185.212.172.228',
+    '185.212.172.230',
+    '185.212.172.232',
+    '185.212.172.234',
+    '185.212.172.236',
+    '185.212.172.238',
+    '185.212.172.227',
+    '185.212.172.229',
+    '185.212.172.231',
+    '185.212.172.233',
+    '185.212.172.235',
+    '185.212.172.237',
+    '185.212.172.239',
+    '185.212.172.240',
+    '185.212.172.241',
+    '185.212.172.243',
+    '185.212.172.245',
+    '185.212.172.247',
+    '185.212.172.249',
+    '185.212.172.251',
+    '185.212.172.253',
+    '185.212.172.242',
+    '185.212.172.244',
+    '185.212.172.246',
+    '185.212.172.248',
+    '185.212.172.250'
   ],
   // src/ 数据网站
   bcom: [
-    'solamonpink.pw',
-    'solomenalert.pw',
-    'solomonmodel.pw',
-    'selomanpure.pw',
-    'solomenalert.pw',
-    'solomonmodel.pw'
+    'solomencd.pw',
+    'akmartin.pw',
+    'adstrialo.site',
+    'camartins.top',
+    'martasian.site',
+    'cimartin.pw',
+    'solemenvery.pw',
+    'camartins.top',
+    'martasian.site',
+    'cimartin.pw',
+    'solemenvery.pw',
+    'solomencd.pw',
+    'ecoosandals.top',
+    'akmartin.pw',
+    'martasian.site',
+    'solemenvery.pw',
+    'akmartin.pw',
+    'solomencd.pw',
+    'cimartin.pw',
+    'akmartin.pw',
+    'martasian.site',
+    'solomencd.pw',
+    'martasian.site',
+    'cimartin.pw',
+    'solemenvery.pw',
+    'martasian.site',
+    'akmartin.pw'
   ],
   zc: [
-    'ZC37',
     'ZC31',
     'ZC18',
+    'ZC35',
+    'ZC36',
+    'ZC37',
     'ZC38',
+    'ZC39',
+    'ZC36',
+    'ZC37',
+    'ZC38',
+    'ZC39',
     'ZC31',
+    'ZC32',
+    'ZC18',
+    'ZC37',
+    'ZC39',
+    'ZC18',
+    'ZC31',
+    'ZC38',
+    'ZC18',
+    'ZC37',
+    'ZC31',
+    'ZC37',
+    'ZC38',
+    'ZC39',
+    'ZC37',
     'ZC18'
   ]
 }
@@ -107,10 +199,10 @@ if( argv.bat ){
   tar -zxvf ${argv.a}.gz && 
   rm -rf *.sql *.gz && 
   sed -i 's/${argv.a}/${argv.b}/g' /www/web/${bHeaderName}_${bFooterName}/public_html/.htaccess && 
+  sed -i '/DB_DATABASE/s/${aDBanem}/${bDBanem}/g' /www/web/${bHeaderName}_${bFooterName}/public_html/includes/configure.php && 
   sed -i '/DB_DATABASE/s/${aDBanem}/${bDBanem}/g' /www/web/${bHeaderName}_${bFooterName}/public_html/whbost/includes/configure.php || 
   sed -i '/DB_DATABASE/s/${aDBanem}/${bDBanem}/g' /www/web/${bHeaderName}_${bFooterName}/public_html/fly365/includes/configure.php || 
   sed -i '/DB_DATABASE/s/${aDBanem}/${bDBanem}/g' /www/web/${bHeaderName}_${bFooterName}/public_html/biubiu/includes/configure.php && 
-  sed -i '/DB_DATABASE/s/${aDBanem}/${bDBanem}/g' /www/web/${bHeaderName}_${bFooterName}/public_html/includes/configure.php && 
   sed -i 's/${aHeaderName}/${bHeaderName}/g' /www/web/${bHeaderName}_${bFooterName}/public_html/includes/configure.php && 
   sed -i 's/${aHeaderName}/${bHeaderName}/g' /www/web/${bHeaderName}_${bFooterName}/public_html/whbost/includes/configure.php || 
   sed -i 's/${aHeaderName}/${bHeaderName}/g' /www/web/${bHeaderName}_${bFooterName}/public_html/fly365/includes/configure.php || 
@@ -142,10 +234,10 @@ else if( argv.export ){
   tar -zxvf zc.gz && 
   rm -rf *.sql *.gz && 
   sed -i 's/${argv.a}/${argv.b}/g' /www/web/${bHeaderName}_${bFooterName}/public_html/.htaccess && 
+  sed -i '/DB_DATABASE/s/${aDBanem}/${bDBanem}/g' /www/web/${bHeaderName}_${bFooterName}/public_html/includes/configure.php && 
   sed -i '/DB_DATABASE/s/${aDBanem}/${bDBanem}/g' /www/web/${bHeaderName}_${bFooterName}/public_html/whbost/includes/configure.php || 
   sed -i '/DB_DATABASE/s/${aDBanem}/${bDBanem}/g' /www/web/${bHeaderName}_${bFooterName}/public_html/fly365/includes/configure.php || 
   sed -i '/DB_DATABASE/s/${aDBanem}/${bDBanem}/g' /www/web/${bHeaderName}_${bFooterName}/public_html/biubiu/includes/configure.php && 
-  sed -i '/DB_DATABASE/s/${aDBanem}/${bDBanem}/g' /www/web/${bHeaderName}_${bFooterName}/public_html/includes/configure.php && 
   sed -i 's/${aHeaderName}/${bHeaderName}/g' /www/web/${bHeaderName}_${bFooterName}/public_html/includes/configure.php && 
   sed -i 's/${aHeaderName}/${bHeaderName}/g' /www/web/${bHeaderName}_${bFooterName}/public_html/whbost/includes/configure.php || 
   sed -i 's/${aHeaderName}/${bHeaderName}/g' /www/web/${bHeaderName}_${bFooterName}/public_html/fly365/includes/configure.php || 
@@ -174,11 +266,11 @@ else if( argv.export ){
   tar -zxvf zc.gz && 
   rm -rf zc.gz && 
   sed -i 's/${argv.a}/${argv.b}/g' /www/web/${bHeaderName}_${bFooterName}/public_html/.htaccess && 
-  sed -i 's/${aHeaderName}/${bHeaderName}/g' /www/web/${bHeaderName}_${bFooterName}/public_html/includes/configure.php && 
+  sed -i '/DB_DATABASE/s/${aDBanem}/${bDBanem}/g' /www/web/${bHeaderName}_${bFooterName}/public_html/includes/configure.php && 
   sed -i '/DB_DATABASE/s/${aDBanem}/${bDBanem}/g' /www/web/${bHeaderName}_${bFooterName}/public_html/whbost/includes/configure.php || 
   sed -i '/DB_DATABASE/s/${aDBanem}/${bDBanem}/g' /www/web/${bHeaderName}_${bFooterName}/public_html/fly365/includes/configure.php || 
   sed -i '/DB_DATABASE/s/${aDBanem}/${bDBanem}/g' /www/web/${bHeaderName}_${bFooterName}/public_html/biubiu/includes/configure.php && 
-  sed -i '/DB_DATABASE/s/${aDBanem}/${bDBanem}/g' /www/web/${bHeaderName}_${bFooterName}/public_html/includes/configure.php && 
+  sed -i 's/${aHeaderName}/${bHeaderName}/g' /www/web/${bHeaderName}_${bFooterName}/public_html/includes/configure.php && 
   sed -i 's/${aHeaderName}/${bHeaderName}/g' /www/web/${bHeaderName}_${bFooterName}/public_html/whbost/includes/configure.php || 
   sed -i 's/${aHeaderName}/${bHeaderName}/g' /www/web/${bHeaderName}_${bFooterName}/public_html/fly365/includes/configure.php || 
   sed -i 's/${aHeaderName}/${bHeaderName}/g' /www/web/${bHeaderName}_${bFooterName}/public_html/biubiu/includes/configure.php && 
