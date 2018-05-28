@@ -6,9 +6,15 @@ yargs.src = yargs.src || './src/'
 yargs.dist = yargs.dist || `./data/`
 
 const file = []
-for(let v of yargs.file.split(',')){
-  file.push(`./mdb/${v}.db3`)
+
+if( yargs.file.toString().indexOf(',') == '-1' ){
+  yargs.db3 ? file.push(`./mdb/${yargs.file}.db3`) : file.push(`./mdb/${yargs.file}.mdb`)
+}else{
+  for(let v of yargs.file.split(',')){
+    yargs.db3 ? file.push(`./mdb/${v}.db3`) : file.push(`./mdb/${v}.mdb`)
+  }
 }
+
 
 const mdbFile = yargs.db3 ? file : file
 
