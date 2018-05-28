@@ -284,7 +284,7 @@ else if( argv.export ){
   sed -i 's/${aPasswd}/${bPasswd}/g' /www/web/${bHeaderName}_${bFooterName}/public_html/biubiu/includes/configure.php
   `
 }
-exec('clip').stdin.end(str.replace(/\n/g, ''));
+  exec('clip').stdin.end(str.replace(/\n/g, ''));
 }
 
 // console.log(  );
