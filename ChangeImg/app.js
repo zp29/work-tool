@@ -1,10 +1,16 @@
 
+/**
+ * 改变图片大小
+ * time : 18 - 5
+ */
+
 const gm = require('gm')
 const fs = require('fs')
 
 const list = fs.readdirSync('img/')
 
 for( let v of list ){
+  // 判断文件名是否包含 `zc` 字样
   let path = `./img/${v}`
   v.indexOf('ZC37') !== -1 ? ChangSize(path, 1140, 597) : ''
   v.indexOf('ZC38') !== -1 ? ChangSize(path, 1140, 580) : ''
@@ -18,6 +24,12 @@ for( let v of list ){
   v.indexOf('ZC35') !== -1 ? ChangSize(path, 1519, 570) : ''
 }
 
+/**
+ *  改变图片大小
+ * @param {String} path   原图片和保存图片路
+ * @param {String} width  图片宽度
+ * @param {String} height 图片高度
+ */
 function ChangSize(path, width, height) {
   gm(path)
     .resize(width, height, '!')
