@@ -72,3 +72,4 @@ if ( yargs.download ) {
 } else {
   console.log(`${colors.red('No')} AutoDownload Imgs ...`);
 }
+
