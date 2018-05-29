@@ -7,6 +7,7 @@ yargs.dist = yargs.dist || `./data/`
 
 const file = []
 
+
 if( yargs.file.toString().indexOf(',') == '-1' ){
   yargs.db3 ? file.push(`./mdb/${yargs.file}.db3`) : file.push(`./mdb/${yargs.file}.mdb`)
 }else{
