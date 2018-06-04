@@ -1,0 +1,72 @@
+New
+
+Mens
+  Tops
+    Polos
+    Sport Shirts
+    Sweaters
+    Pullovers & T-Shirts
+  Bottoms
+    Pants
+    Shorts
+    Swim Trunks
+    Innerwear
+  Outerwear
+    Jackets & Coats
+    Vests
+    Windbreakers
+  Dress Clothing
+    Sport Coats
+  Shoes
+    Dress Shoes
+    Casual Shoes
+    Golf Shoes
+  Accessories
+    Bags
+    Belts
+    Ties & Pocket Squares
+    Socks
+    Hats & Gloves & Scarves
+    Eyewear
+    Cologne & Small Accessories
+  Collections
+    Peter Millar Collection
+    Crown Sport
+    Crown
+    Peter Millar Seaside
+    Crown Sport Active
+women
+  Tops
+    Polos & Shirts
+    Sweaters
+    Half-zips & Full-zips
+  Bottoms
+    Skorts & Dresses
+    Shorts & Pants
+  Outerwear
+    Jackets
+    Vests
+  Shoes & Accessories
+
+Golf
+  Men's Tops
+    Polos
+    Pullovers
+  Men's Bottoms
+    Shorts
+    Pants
+  Men's Outerwear
+    Windbreakers
+    Jackets
+    Vests
+  Men's Accessories
+  Men's Golf  Shoes
+  Women's Tops
+    Polos & Shirts
+    Sweaters
+    Half-Zips & Full-Zips
+  Women's Bottoms
+    Skorts & Dresses
+  Women's Outerwear
+    Vests
+    Jackets

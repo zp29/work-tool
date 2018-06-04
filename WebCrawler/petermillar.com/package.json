@@ -1,0 +1,24 @@
+{
+  "name": "petermillar",
+  "version": "1.0.0",
+  "description": "",
+  "main": "console.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "async": "^2.6.0",
+    "cheerio": "^1.0.0-rc.2",
+    "colors": "^1.2.1",
+    "fs": "0.0.1-security",
+    "json2xls": "^0.1.2",
+    "superagent": "^3.8.2",
+    "sync": "^0.2.5",
+    "valid-url": "^1.0.9",
+    "xlsx": "^0.12.10",
+    "yargs": "^11.0.0"
+  }
+}

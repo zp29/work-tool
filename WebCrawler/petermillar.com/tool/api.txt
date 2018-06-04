@@ -1,0 +1,47 @@
+
+api
+
+url -> https://www.petermillar.com/api/page_info?url= %2F products %2F ${id} %2F ${name - name} &params=product.
+       https://www.petermillar.com/api/page_info?url= %2F products %2F LS18EZ02 %2F Hybrid-Vest &params=product
+       https://www.petermillar.com/api/page_info?url= %2F products %2F LS18EZ01 %2F Reversible-Vest &params=product
+       https://www.petermillar.com/api/page_info?url= %2F products %2F LS18EZ01B %2F Reversible-Vest &params=product
+
+标题 title -> product[0].name
+价格 Price -> product[0].maxPrice
+描述 Desc -> product[0].description.body || html...
+属性 Size -> product[0].attrSetMap.size[i].value 排除最后一个
+分类 Class -> product[0].flatCategoryTree 最后一个
+主图 mainImg -> product[0].displayMedia[0]
+详细图 viceImg -> product[0].displayMedia[1+]
+
+
+https://image-cdn.symphonycommerce.com/images/sites/petermillar/product_images/ MS18W40NBL_THB .450w.jpg
+https://image-cdn.symphonycommerce.com/images/sites/petermillar/product_images/ MS18W40NBL_THB _ALT_A_CF.450w.jpg
+https://image-cdn.symphonycommerce.com/images/sites/petermillar/product_images/ MS18W40NBL_THB _ALT_B_CF.450w.jpg
+https://image-cdn.symphonycommerce.com/images/sites/petermillar/product_images/ MS18W40NBL_THB _ALT_A.450w.jpg
+https://image-cdn.symphonycommerce.com/images/sites/petermillar/product_images/ MS18W40NBL_THB _ALT_Z.450w.jpg
+
+https://image-cdn.symphonycommerce.com/images/sites/petermillar/product_images/ MS18EB92_CRED .450w.jpg
+https://image-cdn.symphonycommerce.com/images/sites/petermillar/product_images/ MS18EB92_CRED _ALT_A_CF.450w.jpg
+https://image-cdn.symphonycommerce.com/images/sites/petermillar/product_images/ MS18EB92_CRED _ALT_B_CF.450w.jpg
+https://image-cdn.symphonycommerce.com/images/sites/petermillar/product_images/ MS18EB92_CRED _ALT_A.450w.jpg
+https://image-cdn.symphonycommerce.com/images/sites/petermillar/product_images/ MS18EB92_CRED _ALT_Z.450w.jpg
+
+--- YES
+
+https://image-cdn.symphonycommerce.com/images/sites/petermillar/product_images/ MS18RP02_BARCH_ALT_A_CF.450w.jpg
+https://image-cdn.symphonycommerce.com/images/sites/petermillar/product_images/ MS18RP02_BARCH_ALT_B_CF.450w.jpg
+https://image-cdn.symphonycommerce.com/images/sites/petermillar/product_images/ MS18RP02_BARCH_ALT_A.450w.jpg
+https://image-cdn.symphonycommerce.com/images/sites/petermillar/product_images/ MS18RP02_BARCH_ALT_Z.450w.jpg
+ 
+---  
+ 
+httpS://image-cdn.symphonycommerce.com/images/sites/petermillar/product_images/ MS18RP02_BARCH_ALT_A_CF_ALT_A_CF.500w.jpg
+httpS://image-cdn.symphonycommerce.com/images/sites/petermillar/product_images/ MS18RP02_BARCH_ALT_A_CF_ALT_B_CF.500w.jpg
+httpS://image-cdn.symphonycommerce.com/images/sites/petermillar/product_images/ MS18RP02_BARCH_ALT_A_CF_ALT_A.500w.jpg
+httpS://image-cdn.symphonycommerce.com/images/sites/petermillar/product_images/ MS18RP02_BARCH_ALT_A_CF_ALT_Z.500w.jpg
+
+
+https://image-cdn.symphonycommerce.com/images/sites/petermillar/product_ima…rce.com/images/sites/petermillar/product_images/MS18P05_ATL_ALT_Z.500w.jpg
+
+
