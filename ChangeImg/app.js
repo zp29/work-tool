@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 
 /**
  * 改变图片大小
