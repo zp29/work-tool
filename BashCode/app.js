@@ -1,6 +1,6 @@
+#!/usr/bin/env node  
 
 /* This is the garbage code I wrote */
-
 
 /**
  * Time : 2018 - 5
@@ -9,66 +9,38 @@
 
 const argv = require('yargs').argv
 const {exec} = require('child_process')
-
 const text = {
-  // dist/ 待上线网站
+  // dist/ 新站 
   acom: [
-    'melshoes.site',
-    'merlshoesde.pw',
-    'vembshoesfe.pw',
-    'vbremshoesap.pw',
-    'esghdtienda.pw',
-    'uniquehair.pw',
-    'ghdishop.pw',
-    'perfecthair.pw',
-    'salemartense.pw',
-    'drbotasmartn.pw',
-    'oxfordmartin.pw',
-    'solomanplus.pw',
-    'selemonappointed.pw',
-    'selomanweekly.pw',
-    'salamoncross.pw',
-    'selemonvertical.pw',
-    'kaonfootwear.pw',
+    'vibmfiveshoesfv.top',
+    'merraloutshoes.top',
+    'mellrwalkshoese.top',
+    'vibmfinsneakersrt.top',
+    'vibsneakers.top',
+    'vrbmfinshoesa.top',
+    'vbemfershoesu.top',
+    'vrbmfershoesc.top',
   ],
   ip: [
-    '23.228.237.40',
-    '23.228.239.107',
-    '23.228.227.140',
-    '23.228.228.236',
-    '23.228.230.28',
-    '23.228.234.188',
-    '23.228.236.236',
-    '23.228.237.44',
-    '23.228.239.108',
-    '23.228.227.141',
-    '23.228.228.237',
-    '23.228.230.29',
-    '23.228.234.189',
-    '23.228.236.237',
-    '23.228.237.45',
-    '23.228.239.109',
-    '23.228.227.142',
+    '107.160.67.82',
+    '23.228.228.238',
+    '23.228.230.30',
+    '23.228.234.190',
+    '23.228.236.238',
+    '23.228.237.46',
+    '23.228.239.110',
+    '104.149.2.202',
   ],
-  // src/ 数据网站
+  // src/ 数据站
   bcom: [
-   'selomanlate.pw',
-   'birkenslippersa.site',
-   'solomanex.pw',
-   'salamonfoster.pw',
-   'selamancomplex.pw',
-   'merallfootwear.pw',
-   'salamonacademic.pw',
-   'aaccessible.club',
-   'solomanex.pw',
-   'selomanlate.pw',
-   'selamancomplex.pw',
-   'birkenslippersa.site',
-   'salamonacademic.pw',
-   'aaccessible.club',
-   'solomanex.pw',
-   'salamonfoster.pw',
-   'selomanlate.pw',
+   'vibmfiveshoesfv.top',
+   'merraloutshoes.top',
+   'mellrwalkshoese.top',
+   'vibmfinsneakersrt.top',
+   'vibsneakers.top',
+   'vrbmfinshoesa.top',
+   'vbemfershoesu.top',
+   'vrbmfershoesc.top',
   ],
   zc: [
     'ZC31',
@@ -79,15 +51,6 @@ const text = {
     'ZC38',
     'ZC39',
     'ZC36',
-    'ZC37',
-    'ZC31',
-    'ZC35',
-    'ZC18',
-    'ZC29',
-    'ZC36',
-    'ZC37',
-    'ZC32',
-    'ZC31',
   ]
 }
 
@@ -104,7 +67,7 @@ if( argv.txt ){
   }
   str += `------***------\n`
   for(let key in text.acom){
-    str += `node copy --a='${text.bcom[key]}' --b='${text.acom[key]}' --ap='${passwd}'\n`
+    str += `whbostcopy --a='${text.bcom[key]}' --b='${text.acom[key]}' --ap='${passwd}'\n`
   }
   str += `------***------\n`
   for(let v of text.acom){
@@ -137,6 +100,7 @@ const bFooterName = argv.b.slice(argv.b.indexOf('.')+1, argv.b.length)
 
 const aDBanem = argv.adb || aHeaderName.replace('-','_')
 const bDBanem = argv.bdb || bHeaderName.replace('-','_')
+
 
 const aPasswd = argv.ap
 const bPasswd = argv.bp || argv.ap
