@@ -12,45 +12,85 @@ const {exec} = require('child_process')
 const text = {
   // dist/ 新站 
   acom: [
-    'vibmfiveshoesfv.top',
-    'merraloutshoes.top',
-    'mellrwalkshoese.top',
-    'vibmfinsneakersrt.top',
-    'vibsneakers.top',
-    'vrbmfinshoesa.top',
-    'vbemfershoesu.top',
-    'vrbmfershoesc.top',
+    'birkensliden.site',
+    'esflipflope.top',
+    'eoooes.site',
+    'selemonhairy.pw',
+    'vansappropriate.pw',
+    'vbiamachaussuresi.pw',
+    'merrlchaussuresaa.site',
+    'stivalimartln.pw',
+    'hairstyleclub.pw  ',
+    'esbirkene.top',
+    'frflipflope.site',
+    'ecoonz.site',
+    'selomanready.pw',
+    'vansrepresented.pw',
+    'vbiamcchaussuresz.site',
+    'merrlesshoesv.site',
+    'martinscarpe.pw',
+    'perfect-hair.pw',
   ],
   ip: [
-    '107.160.67.82',
-    '23.228.228.238',
-    '23.228.230.30',
-    '23.228.234.190',
-    '23.228.236.238',
-    '23.228.237.46',
-    '23.228.239.110',
-    '104.149.2.202',
+    '107.160.251.74',
+    '107.160.251.90',
+    '107.160.227.10',
+    '107.160.67.94',
+    '107.160.109.30',
+    '107.160.135.94',
+    '107.160.145.62',
+    '107.160.210.158',
+    '107.160.223.14',
+    '107.160.251.75',
+    '107.160.251.91',
+    '107.160.227.11',
+    '107.160.251.76',
+    '107.160.251.92',
+    '107.160.227.12',
+    '107.160.251.77',
+    '107.160.251.93',
+    '107.160.227.13',
   ],
   // src/ 数据站
   bcom: [
-   'vibmfiveshoesfv.top',
-   'merraloutshoes.top',
-   'mellrwalkshoese.top',
-   'vibmfinsneakersrt.top',
-   'vibsneakers.top',
-   'vrbmfinshoesa.top',
-   'vbemfershoesu.top',
-   'vrbmfershoesc.top',
+    'vanseligible.pw',
+    'vbemrashoesa.site',
+    'merrlesshoesc.top',
+    'martinboutique.top',
+    'ghdnew.top',
+    'birkenslidem.pw',
+    'sflipflopa.top',
+    'eoocflats.site',
+    'selomanwilling.pw',
+    'vbemrashoesa.site',
+    'eoooes.site',
+    'martinboutique.top',
+    'ghdnew.top',
+    'birkenslidem.pw',
+    'sflipflopa.top',
+    'eoocflats.site',
+    'selomanwilling.pw',
+    'vanseligible.pw',
   ],
   zc: [
-    'ZC31',
-    'ZC18',
-    'ZC37',
-    'ZC32',
-    'ZC35',
     'ZC38',
-    'ZC39',
     'ZC36',
+    'ZC31',
+    'ZC18', 
+    'ZC39',
+    'ZC29',
+    'ZC32',
+    'ZC35', 
+    'ZC37',
+    'ZC36',
+    'ZC31',
+    'ZC18', 
+    'ZC39',
+    'ZC29',
+    'ZC32',
+    'ZC35', 
+    'ZC37',
+    'ZC38',
   ]
 }
 
@@ -60,7 +100,24 @@ if( argv.txt ){
   for(let key in text.acom){
   str += `${text.acom[key]}
   ${text.ip[key]}\n`
+  // str += `$('.layui-form-item').eq(0).find('input').val('${text.acom[key]}') $('.layui-collapse').find('.layui-colla-item').eq(2).find('input.layui-input').val('www.${text.acom[key]}') $('.layui-collapse').find('.layui-colla-item').eq(8).find('.layui-input.layui-unselect ').eq(1).val('${text.ip[key]}') $('.layui-btn.layui-btn-small').eq(2).submit() \n\n`
   }
+  str += `
+    let urls = ${text.acom}
+    let ip = ${text.ip}
+    let id = 0
+    let times = setInterval(() => {
+      $('.layui-form-item').eq(0).find('input').val(\`\${urls[id]}\`)
+      $('.layui-collapse').find('.layui-colla-item').eq(2).find('input.layui-input').val(\`www.\${urls[id]}\`)
+      $('.layui-collapse').find('.layui-colla-item').eq(8).find('select').eq(1).find(\`option[value="\${ip[id]}"]\`).attr("selected",true)
+      $('.layui-btn.layui-btn-small').eq(2).submit()
+      console.log(\`\${urls[id]} Create OK\`)
+      if ( id === urls.length ) {
+        clearInterval(times);
+      }
+      id ++
+    }, 2000)
+  `
   str += `------***------\n`
   for(let v of text.acom){
     str += `${v.slice(0, v.indexOf('.'))}\n`
