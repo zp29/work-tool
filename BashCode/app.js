@@ -7,83 +7,92 @@
  * By : zp-29
  */
 
+const superagent = require('superagent')
+require('superagent-charset')(superagent)
+const cheerio = require('cheerio')
+const api = 'http://us.2kz.net/'
+
 const argv = require('yargs').argv
 const {exec} = require('child_process')
 const text = {
   // dist/ 新站 
   acom: [
-    'birkensliden.site',
-    'esflipflope.top',
-    'eoooes.site',
-    'selemonhairy.pw',
-    'vansappropriate.pw',
-    'vbiamachaussuresi.pw',
-    'merrlchaussuresaa.site',
-    'stivalimartln.pw',
-    'hairstyleclub.pw  ',
-    'esbirkene.top',
-    'frflipflope.site',
-    'ecoonz.site',
-    'selomanready.pw',
-    'vansrepresented.pw',
-    'vbiamcchaussuresz.site',
-    'merrlesshoesv.site',
-    'martinscarpe.pw',
-    'perfect-hair.pw',
+    'sclomankey.pw',
+    'sclomanprime.pw',
+    'selamanfit.pw',
+    'selomanli.pw',
+    'selemonimportant.pw',
+    'salomanlegal.pw',
+    'selamansoft.pw',
+    'salomanhardcore.pw',
+    'vbiamgscarpav.pw',
+    'virmtrailshoesaf.top',
+    'virmtrailshoesad.site',
+    'vbemrashoesl.site',
+    'vbemrashoese.top',
+    'myflipflope.top',
+    'phflipflope.site',
+    'dflipflope.site',
+    'phflipflope.top',
+    'ukflipflops.pw',
+    'ecoonz.top',
+    'eoocie.top',
+    'ecocdk.top',
+    'eocodk.site',
+    'eccoes.site',
   ],
   ip: [
-    '107.160.251.74',
-    '107.160.251.90',
-    '107.160.227.10',
-    '107.160.67.94',
-    '107.160.109.30',
-    '107.160.135.94',
-    '107.160.145.62',
-    '107.160.210.158',
-    '107.160.223.14',
-    '107.160.251.75',
-    '107.160.251.91',
-    '107.160.227.11',
-    '107.160.251.76',
-    '107.160.251.92',
-    '107.160.227.12',
-    '107.160.251.77',
-    '107.160.251.93',
-    '107.160.227.13',
+    '162.209.230.130',
+    '162.209.230.131',
+    '162.209.230.132',
+    '162.209.230.133',
+    '162.209.230.134',
+    '162.209.230.135',
+    '162.209.230.136',
+    '162.209.230.137',
+    '162.209.230.166',
+    '162.209.230.167',
+    '162.209.230.168',
+    '162.209.230.169',
+    '162.209.230.170',
+    '162.209.229.171',
+    '162.209.229.172',
+    '162.209.229.173',
+    '162.209.229.174',
+    '162.209.229.175',
+    '172.247.60.7',
+    '172.247.60.8',
+    '172.247.60.9',
+    '172.247.60.10',
+    '172.247.60.11',
   ],
   // src/ 数据站
   bcom: [
-    'vanseligible.pw',
-    'vbemrashoesa.site',
-    'merrlesshoesc.top',
-    'martinboutique.top',
-    'ghdnew.top',
-    'birkenslidem.pw',
-    'sflipflopa.top',
-    'eoocflats.site',
-    'selomanwilling.pw',
-    'vbemrashoesa.site',
-    'eoooes.site',
-    'martinboutique.top',
-    'ghdnew.top',
-    'birkenslidem.pw',
-    'sflipflopa.top',
-    'eoocflats.site',
-    'selomanwilling.pw',
-    'vanseligible.pw',
+    'aflipflopa.site',
+    'eoocsandals.pw',
+    'solomanmini.pw',
+    'vansstable.pw',
+    'bottevente.xyz',
+    'ghdlisseur.pw',
+    'martinsclub.top',
+    'plaqueghd.top',
+    'aflipflopa.site',
+    'eoocsandals.pw',
+    'solomanmini.pw',
+    'vansstable.pw',
+    'bottevente.xyz',
+    'aflipflopa.site',
+    'eoocsandals.pw',
+    'solomanmini.pw',
+    'vansstable.pw',
+    'bottevente.xyz',
+    'ghdlisseur.pw',
+    'martinsclub.top',
+    'plaqueghd.top',
+    'aflipflopa.site',
+    'eoocsandals.pw',
   ],
   zc: [
-    'ZC38',
-    'ZC36',
-    'ZC31',
-    'ZC18', 
-    'ZC39',
-    'ZC29',
-    'ZC32',
-    'ZC35', 
-    'ZC37',
-    'ZC36',
-    'ZC31',
     'ZC18', 
     'ZC39',
     'ZC29',
@@ -91,32 +100,92 @@ const text = {
     'ZC35', 
     'ZC37',
     'ZC38',
+    'ZC36',
+    'ZC18', 
+    'ZC39',
+    'ZC29',
+    'ZC32',
+    'ZC35', 
+    'ZC18', 
+    'ZC39',
+    'ZC29',
+    'ZC32',
+    'ZC35', 
+    'ZC37',
+    'ZC38',
+    'ZC36',
+    'ZC18', 
+    'ZC39',
   ]
 }
-
 let str = ''
+
+if ( argv.dns ) {
+  // $('.input.input-select').eq(1).find('option[value="US"]').attr("selected",true)
+  // $('.input.input-select').eq(0).find('option[value="3526"]').attr("selected",true)
+  // $(".required.input.toggleElement.irtp-enabled").val('name.')
+  // $("textarea").val('addr.')
+  // $('input[name="city"]').eq(0).val('city')
+  // $('input[name="bash"]').eq(0).val('bash')
+  // $('input[name="telnocc"]').eq(0).val('tel 1')
+  // $('input[name="telno"]').eq(0).val('tel 2')
+  superagent
+    .get(api)
+    .charset('gbk')
+    .end((err, res)=>{
+      // err | console.log(err)
+      let html = res.text
+      let $ = cheerio.load(html, {decodeEntities: false})
+      let arr = $('table td').eq(0).text().replace(/[\u4e00-\u9fa5]/g, '').replace(/\：/g,'|').split('|')
+      str += `$('.input.input-select').eq(1).find('option[value="US"]').attr("selected",true);`
+      str += `$('.input.input-select').eq(0).find('option[value="3526"]').attr("selected",true);`
+      console.log( 'name -> ', arr[1] )
+      str += `$(".required.input.toggleElement.irtp-enabled").val('${arr[1]}');`
+      // name
+      console.log( 'addr -> ', arr[2] )
+      str += `$("textarea").val('${arr[2]}');`
+      // addr
+      console.log( 'city -> ', arr[3] )
+      str += `$('input[name="city"]').eq(0).val('${arr[3]}');`
+      // city
+      console.log( 'bash -> ', arr[6] )
+      str += `$('input[name="zip"]').eq(0).val('${arr[6]}');`
+      // city bash
+      console.log( 'tel 1 -> ', arr[7].split('.')[0].replace('+','') )
+      str += `$('input[name="telnocc"]').eq(0).val('${arr[7].split('.')[0].replace('+','')}');`
+      console.log( 'tel 2 -> ', arr[7].split('.')[1] )
+      str += `$('input[name="telno"]').eq(0).val('${arr[7].split('.')[1]}');`
+      // tel
+      console.log(str)
+      exec('clip').stdin.end(str);
+    })
+}
 if( argv.txt ){
   const passwd = 'TRwq*Aj9Pb'
   for(let key in text.acom){
-  str += `${text.acom[key]}
-  ${text.ip[key]}\n`
-  // str += `$('.layui-form-item').eq(0).find('input').val('${text.acom[key]}') $('.layui-collapse').find('.layui-colla-item').eq(2).find('input.layui-input').val('www.${text.acom[key]}') $('.layui-collapse').find('.layui-colla-item').eq(8).find('.layui-input.layui-unselect ').eq(1).val('${text.ip[key]}') $('.layui-btn.layui-btn-small').eq(2).submit() \n\n`
+    str += `${text.acom[key]}\n ${text.ip[key]}\n`
+    // str += `$('.layui-form-item').eq(0).find('input').val('${text.acom[key]}') $('.layui-collapse').find('.layui-colla-item').eq(2).find('input.layui-input').val('www.${text.acom[key]}') $('.layui-collapse').find('.layui-colla-item').eq(8).find('.layui-input.layui-unselect ').eq(1).val('${text.ip[key]}') $('.layui-btn.layui-btn-small').eq(2).submit() \n\n`
   }
   str += `
-    let urls = ${text.acom}
-    let ip = ${text.ip}
-    let id = 0
-    let times = setInterval(() => {
-      $('.layui-form-item').eq(0).find('input').val(\`\${urls[id]}\`)
-      $('.layui-collapse').find('.layui-colla-item').eq(2).find('input.layui-input').val(\`www.\${urls[id]}\`)
-      $('.layui-collapse').find('.layui-colla-item').eq(8).find('select').eq(1).find(\`option[value="\${ip[id]}"]\`).attr("selected",true)
-      $('.layui-btn.layui-btn-small').eq(2).submit()
-      console.log(\`\${urls[id]} Create OK\`)
-      if ( id === urls.length ) {
-        clearInterval(times);
-      }
-      id ++
-    }, 2000)
+let urls = ['aaa.com','bbb.com']
+let ip = ['1.1.1.1','2.2.2.2']
+let id = 0
+let times = setInterval(() => {
+  $('.layui-form-item').eq(0).find('input').val(\`\${urls[id]}\`)
+  $('.layui-collapse').find('.layui-colla-item').eq(2).find('input.layui-input').val(\`www.\${urls[id]}\`)
+  $('.layui-collapse').find('.layui-colla-item').eq(8).find('select').eq(1).find(\`option[value="\${ip[id]}"]\`).attr("selected",true)
+  $('.layui-btn.layui-btn-small').eq(2).submit()
+  console.log(\`\${urls[id]} Create OK\`)
+  if ( id === urls.length-1 ) {
+    clearInterval(times);
+    console.log('ok');
+  }
+  id ++
+}, 2000)
+// 填写 urls && ip 值
+// 打开 ip:8080/site/add
+// f12 ->  Console
+// 复制以上代码 -> Enter
   `
   str += `------***------\n`
   for(let v of text.acom){
@@ -133,21 +202,30 @@ if( argv.txt ){
   str += `------***------\n`
   for(let key in text.acom){
     let path = text.zc[key]
+    path = path.replace('zc37', 'marqet/images/slideshow/')
     path = path.replace('ZC37', 'marqet/images/slideshow/')
+    path = path.replace('zc38', 'magnus/images/slideshow/')
     path = path.replace('ZC38', 'magnus/images/slideshow/')
+    path = path.replace('zc36', 'edify/images/slideshow/')
     path = path.replace('ZC36', 'edify/images/slideshow/')
+    path = path.replace('zc18', 'zc18/images/banner/')
     path = path.replace('ZC18', 'zc18/images/banner/')
+    path = path.replace('zc31', 'zc18/images/')
     path = path.replace('ZC31', 'zc18/images/')
+    path = path.replace('zc39', 'bohase/images/slideshow/')
     path = path.replace('ZC39', 'bohase/images/slideshow/')
+    path = path.replace('zc29', 'zc18/images/')
     path = path.replace('ZC29', 'zc18/images/')
+    path = path.replace('zc32', 'zc18/images/')
     path = path.replace('ZC32', 'zc18/images/')
+    path = path.replace('zc35', 'zenshoppe/images/slideshow/')
     path = path.replace('ZC35', 'zenshoppe/images/slideshow/')
     str += `/www/web/${text.acom[key].replace('.','_')}/public_html/includes/templates/${path}\n`
   }
   console.log(str);
   exec('clip').stdin.end(str);
 
-}else {
+}else if(!argv.dns){
 
 const aHeaderName = argv.a.slice(0, argv.a.indexOf('.'))
 const aFooterName = argv.a.slice(argv.a.indexOf('.')+1, argv.a.length)

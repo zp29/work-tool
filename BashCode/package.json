@@ -1,6 +1,6 @@
 {
   "name": "whbostcopy",
-  "version": "1.1.1",
+  "version": "1.2.4",
   "description": "whbostcopy-MakeBash",
   "main": "app.js",
   "bin": {
@@ -12,7 +12,16 @@
   "keywords": [],
   "author": "zp29 <zp.mdzz@gmail.com> ",
   "license": "ISC",
-  "devDependencies": {
+  "dependences": {
+    "cheerio": "^1.0.0-rc.2",
+    "superagent": "^3.8.3",
+    "superagent-charset": "^1.2.0",
+    "yargs": "^11.0.0"
+  },
+  "dependencies": {
+    "cheerio": "^1.0.0-rc.2",
+    "superagent": "^3.8.3",
+    "superagent-charset": "^1.2.0",
     "yargs": "^11.0.0"
   }
 }
