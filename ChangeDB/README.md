@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-
 # Node.js Data-acquisition
 
 ```bash
@@ -132,4 +130,3 @@
 `zp.mdzz@gmail.com`
 
 `zp-29`
->>>>>>> 10c34e1a8e37625a3dc7a0397f2e8341bf296fe5
