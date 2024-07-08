@@ -19,9 +19,15 @@
       "arguments": [
         {
           "name": "tel",
-          "placeholder": "Please enter the telephone number",
+          "placeholder": "请输入手机号",
           "type": "text",
           "required": true
+        },
+        {
+          "name": "env",
+          "placeholder": "请输入环境",
+          "type": "text",
+          "required": false
         }
       ]
     }

@@ -18,15 +18,20 @@ const bbrName = decodeBase64(encryptedBbrName);
 export default function Command(props) {
     let arg = props?.arguments ?? {}
     let tel = arg.tel ?? ''
-    if (!tel) return <Detail markdown="请输入电话号码" />
+    let propsEnv = arg.env ?? ''
+    let FilterEnvironments = propsEnv ? environments.filter(env => env == propsEnv) : environments;
     const number = tels[tel] ?? tel
+    console.log('gettoken.jsx props -> ', props)
+    console.log('gettoken.jsx number -> ', number)
+    console.log('gettoken.jsx propsEnv -> ', propsEnv)
+    if (!number) return <Detail markdown="请输入电话号码" />
 
     const [data, setData] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
         let verifyUrl = ConfigVerifyUrl.replace('{{}}', number);
-        const fetchUrls = environments.map(env => `${fetchRUL[env]}${verifyUrl}&code=${pass[env]}`);
+        const fetchUrls = FilterEnvironments.map(env => `${fetchRUL[env]}${verifyUrl}&code=${pass[env]}`);
         const Promises = fetchUrls.map(url => fetch(url, {
             method: 'POST',
             headers: {
@@ -51,7 +56,7 @@ export default function Command(props) {
         {data.map((envData, index) => {
             let info = envData ?? {};
             let access_token = info?.access_token ?? '';
-            let envKey = environments[index];
+            let envKey = FilterEnvironments[index];
             let number = tels[tel];
 
             if (!access_token) return <Detail markdown="没有token" key={envKey} />;
