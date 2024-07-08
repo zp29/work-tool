@@ -1,0 +1,3 @@
+# locp
+
+loc prop

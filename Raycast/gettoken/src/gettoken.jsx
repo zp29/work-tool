@@ -96,6 +96,7 @@ export default function Command(props) {
                                     <ActionPanel>
                                         <Action.OpenInBrowser title="Open in Browser" url={url} />
                                         <Action.OpenInBrowser title="Open in Local Server" url={LocalUrl} />
+                                        <Action.CopyToClipboard title="Copy URL" content={url} />
                                     </ActionPanel>
                                 }
                             />
