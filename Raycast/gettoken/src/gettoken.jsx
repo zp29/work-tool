@@ -1,7 +1,11 @@
-import { Detail, List, Action, ActionPanel } from '@raycast/api';
+import { Detail, List, Action, ActionPanel, showToast, Toast } from '@raycast/api';
 import fetch from 'node-fetch';
 import { useState, useEffect } from 'react';
 import { environments, encryptedPass, encryptedFetchRUL, encryptedTels, encryptedBbrName, encryptedAuthorization, encryptedConfigVerifyUrl } from './config';
+process.env.HTTP_PROXY = '';
+process.env.HTTPS_PROXY = '';
+process.env.http_proxy = '';
+process.env.https_proxy = '';
 
 // 解密函数
 const decodeBase64 = (encoded) => Buffer.from(encoded, 'base64').toString('utf-8');
@@ -34,20 +38,30 @@ export default function Command(props) {
         const fetchUrls = FilterEnvironments.map(env => `${fetchRUL[env]}${verifyUrl}&code=${pass[env]}`);
         const Promises = fetchUrls.map(url => fetch(url, {
             method: 'POST',
+            timeout: 5000, // 增加超时时间为5秒
             headers: {
                 "Accept": "application/json, text/plain, */*",
                 'Content-Type': 'application/json',
-                "Authorization": `Basic ${Authorization}`
+                "Authorization": `Basic ${Authorization}`,
+                'Cookie': 'JSESSIONID=jELvocG9iq9P7MKDFr-ynugK1xpswCcqNWTGsVkL; rememberMe=""; rememberUserCode=""'
             },
-            body: ""
-        }).then(response => response.json()));
+            body:''
+        }).then((response) => response.json()));
         Promise.all(Promises).then(responses => {
-            // console.log('gettoken.jsx responses -> ', responses)
-            const allData = responses.map(response => response.data);
+            console.log('gettoken.jsx responses -> ', responses)
+            let allData = responses.map(response => response?.data);
+            let messages = responses.map(response => response?.message); 
+            let message = messages.join('\n')
+            allData = allData.filter(Boolean);
+            if (allData.length == 0) {
+                showToast({ title: "No Data", message , style: Toast.Style.Failure });
+                return
+            }
+            showToast({ title: "Success", message , style: Toast.Style.Success });
             setData(allData);
             setIsLoading(false);
         }).catch((err) => {
-            console.log('gettoken.jsx err -> ', err)
+            showToast({ title: "Fetch Error", message: err.code , style: Toast.Style.Failure });
             setIsLoading(false);
         })
     }, []);
