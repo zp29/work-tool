@@ -70,6 +70,7 @@ export default function Command(props) {
     return (<List isLoading={isLoading}>
         {data.map((envData, index) => {
             let info = envData ?? {};
+            let nickname = info?.user_info?.nickname ?? '';
             let access_token = info?.access_token ?? '';
             let envKey = FilterEnvironments[index];
             let number = tels[tel];
@@ -78,19 +79,19 @@ export default function Command(props) {
 
             const list = [
                 {
-                    title: `MPC-${envKey}`,
+                    title: `MPC-${envKey}-${nickname}`,
                     url: `${fetchRUL[envKey]}${bbrName}-mpc/index.html#/home?token=${access_token}&${number}`
                 },
                 {
-                    title: `Tower-${envKey}`,
+                    title: `Tower-${envKey}-${nickname}`,
                     url: `${fetchRUL[envKey]}${bbrName}-tower/index.html#/home/index?token=${access_token}&${number}`
                 },
                 {
-                    title: `Davis-${envKey}`,
+                    title: `Davis-${envKey}-${nickname}`,
                     url: `${fetchRUL[envKey]}${bbrName}-davis/index.html#/home?token=${access_token}&${number}`
                 },
                 {
-                    title: `Dealer-${envKey}`,
+                    title: `Dealer-${envKey}-${nickname}`,
                     url: `${fetchRUL[envKey]}${bbrName}-dealer/index.html#/home/index?token=${access_token}&${number}`
                 }
             ]

@@ -70,6 +70,8 @@ export default function Command(props) {
     return (<List isLoading={isLoading}>
         {data.map((envData, index) => {
             let info = envData ?? {};
+            // console.log('getNumber.jsx info -> ', info)
+            let nickname = info?.user_info?.nickname ?? '';
             let access_token = info?.access_token ?? '';
             let envKey = FilterEnvironments[index];
             let number = tels[tel];
@@ -78,12 +80,12 @@ export default function Command(props) {
 
             const list = [
                 {
-                    title: `${number}`,
-                    value: `Number`
+                    value: `${number}`,
+                    title: `${nickname}-Number`
                 },
                 {
-                    title: `${access_token}`,
-                    value: `Token`
+                    value: `${access_token}`,
+                    title: `${nickname}-Token`
                 },
             ]
             return (
