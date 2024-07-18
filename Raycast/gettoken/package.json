@@ -1,8 +1,8 @@
 {
   "$schema": "https://www.raycast.com/schemas/extension.json",
-  "name": "gettoken",
-  "title": "gettoken",
-  "description": "make bbr api",
+  "name": "bbttools",
+  "title": "BBR Tools",
+  "description": "bbraunchina LLC Tools.",
   "icon": "command-icon.png",
   "author": "zp29",
   "owner": "zp29-private",
@@ -13,7 +13,7 @@
   "commands": [
     {
       "name": "gettoken",
-      "title": "gettoken",
+      "title": "gattoken",
       "subtitle": "gettoken sub",
       "description": "make bbr api",
       "mode": "view",
@@ -21,6 +21,27 @@
         {
           "name": "tel",
           "placeholder": "请输入手机号",
+          "type": "text",
+          "required": true
+        },
+        {
+          "name": "env",
+          "placeholder": "请输入环境",
+          "type": "text",
+          "required": false
+        }
+      ]
+    },
+    {
+      "name": "getNumber",
+      "title": "getNumber",
+      "subtitle": "getNumber sub",
+      "description": "make bbr api",
+      "mode": "view",
+      "arguments": [
+        {
+          "name": "tel",
+          "placeholder": "请输入编号",
           "type": "text",
           "required": true
         },

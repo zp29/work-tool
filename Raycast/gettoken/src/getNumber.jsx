@@ -1,7 +1,7 @@
 import { Detail, List, Action, ActionPanel, showToast, Toast } from '@raycast/api';
 import fetch from 'node-fetch';
 import { useState, useEffect } from 'react';
-import { environments, encryptedPass, encryptedFetchRUL, encryptedTels, encryptedBbrName, encryptedAuthorization, encryptedConfigVerifyUrl } from './config';
+import { environments, encryptedPass, encryptedFetchRUL, encryptedTels, encryptedAuthorization, encryptedConfigVerifyUrl } from './config';
 process.env.HTTP_PROXY = '';
 process.env.HTTPS_PROXY = '';
 process.env.http_proxy = '';
@@ -16,7 +16,7 @@ const fetchRUL = Object.fromEntries(Object.entries(encryptedFetchRUL).map(([key,
 const tels = Object.fromEntries(Object.entries(encryptedTels).map(([key, value]) => [key, decodeBase64(value)]));
 const Authorization = decodeBase64(encryptedAuthorization);
 const ConfigVerifyUrl = decodeBase64(encryptedConfigVerifyUrl);
-const bbrName = decodeBase64(encryptedBbrName);
+// const bbrName = decodeBase64(encryptedBbrName);
 
 
 export default function Command(props) {
@@ -78,40 +78,28 @@ export default function Command(props) {
 
             const list = [
                 {
-                    title: `MPC-${envKey}`,
-                    url: `${fetchRUL[envKey]}${bbrName}-mpc/index.html#/home?token=${access_token}&${number}`
+                    title: `${number}`,
+                    value: `Number`
                 },
                 {
-                    title: `Tower-${envKey}`,
-                    url: `${fetchRUL[envKey]}${bbrName}-tower/index.html#/home/index?token=${access_token}&${number}`
+                    title: `${access_token}`,
+                    value: `Token`
                 },
-                {
-                    title: `Davis-${envKey}`,
-                    url: `${fetchRUL[envKey]}${bbrName}-davis/index.html#/home?token=${access_token}&${number}`
-                },
-                {
-                    title: `Dealer-${envKey}`,
-                    url: `${fetchRUL[envKey]}${bbrName}-dealer/index.html#/home/index?token=${access_token}&${number}`
-                }
             ]
             return (
                 <List.Section title={`Environment: ${envKey}`} key={envKey}>
                     {list.map((item) => {
                         let title = item.title;
-                        let url = item.url;
-                        let urls = url.split('#');
-                        let LocalUrl = 'http://localhost:8080/#' + urls[1];
+                        let value = item.value;
 
                         return (
                             <List.Item
                                 key={title}
                                 title={title}
-                                subtitle={url}
+                                subtitle={value}
                                 actions={
                                     <ActionPanel>
-                                        <Action.OpenInBrowser title="Open in Browser" url={url} />
-                                        <Action.OpenInBrowser title="Open in Local Server" url={LocalUrl} />
-                                        <Action.CopyToClipboard title="Copy URL" content={url} />
+                                        <Action.CopyToClipboard title="Copy to Clipboard" content={value} />
                                     </ActionPanel>
                                 }
                             />
