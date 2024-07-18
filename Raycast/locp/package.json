@@ -5,6 +5,7 @@
   "description": "loc prop",
   "icon": "command-icon.png",
   "author": "zp29",
+  "owner": "zp29-private",
   "license": "MIT",
   "commands": [
     {

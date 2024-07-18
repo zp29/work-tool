@@ -6,6 +6,7 @@
   "icon": "command-icon.png",
   "author": "zp29",
   "license": "MIT",
+  "owner": "zp29-private",
   "commands": [
     {
       "name": "xcodeiterm",
