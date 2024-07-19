@@ -315,6 +315,23 @@ upload_file() {
     printf "wget -O ./$name $link" | pbcopy
 }
 
+batssh() {
+        # 获取当前的工作目录
+        current_dir=$(pwd)
+
+        # 获取今天的日期，格式为YYYY-MM-DD
+        time=$(date +%Y-%m-%d)
+
+	cd ~/code/work-tool/
+	cp ~/.zshrc ./ssh/
+	gst
+	ga ssh/
+	gcmsg 'Bat: SSH $time'
+	git push
+
+	cd "$current_dir"
+}
+
 
 export GITHUB_API_URL=http://124.220.157.23:8800
 export GITHUB_SERVER_URL=https://github.com
