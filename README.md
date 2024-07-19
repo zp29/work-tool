@@ -1,55 +1,55 @@
 # work-tool
 
-- 18 - 04
+- ~~18 - 04~~
 
 #### whokl - [数据处理](./work-tool-mdbToXls)
 
   > `.mdb` -> `.json` -> `.xlsx` -> `.xls`
 
 
-#### 技术栈
+#### ~~技术栈~~
 
-  - **node-adodb**
+  - ~~**node-adodb**~~
 
-    > 读取 .mdb 文件 
+    > ~~读取 .mdb 文件~~ 
     >
-    > *read .mdb file** 
+    > ~~*read .mdb file**~~ 
 
-  - async
+  - ~~async~~
 
-    > 异步下载图片
+    > ~~异步下载图片~~
 
-    >  download imgs async
+    >  ~~download imgs async~~
 
-  - fs
+  - ~~fs~~
 
-  - superagent
+  - ~~superagent~~
 
-  - cheerio
+  - ~~cheerio~~
 
-    > Node jQuery
+    > ~~Node jQuery~~
 
-  - yargs
+  - ~~yargs~~
 
-    > 命令行选项
+    > ~~命令行选项~~
 
-    > cmd option
+    > ~~cmd option~~
 
-  - xlsx
+  - ~~xlsx~~
 
-    > xlsx to xls
+    > ~~xlsx to xls~~
 
-  - exceljs
+  - ~~exceljs~~
 
-    > josn to xlsx
+    > ~~josn to xlsx~~
 
-  - **sql.js**
+  - ~~**sql.js**~~
 
-    > 读取 db3 文件
+    > ~~读取 db3 文件~~
     >
-    > **read .db3 file**
+    > ~~**read .db3 file**~~
     >
-    > add - 5.12
+    > ~~add - 5.12~~
 
 ---
 
