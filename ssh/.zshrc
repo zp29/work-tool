@@ -155,11 +155,24 @@ node -v;
 mpcitg() {
   npm run build:itg
   tar -cvf dist.tar dist/
-  sshpass -p "Admin..." scp -rp dist.tar root@172.30.103.2:/home/eoop/tools/bbraun-itg/mpc-web/;
+  ENCODED_PASSWORD="WVotaXQ0MTg="
+  DECODED_PASSWORD=$(echo "$ENCODED_PASSWORD" | base64 --decode)
+  sshpass -p "$DECODED_PASSWORD" scp -rp dist.tar root@172.30.103.2:/home/eoop/tools/bbraun-itg/mpc-web/;
   # scp -rp dist.tar root@172.30.103.2:/home/eoop/tools/bbraun-itg/mpc-web/
   curl https://tower-itg.bbraunchina.cn/hooks/itg-deploy-mpc-web
   rm -rf dist.tar
 }
+mpcuat() {
+  npm run build:uat
+  tar -cvf dist.tar dist/
+  ENCODED_PASSWORD="WVotaXQ0MTg="
+  DECODED_PASSWORD=$(echo "$ENCODED_PASSWORD" | base64 --decode)
+  sshpass -p "$DECODED_PASSWORD" scp -rp dist.tar root@172.30.103.2:/home/eoop/tools/bbraun-uat/mpc-web/;
+  # scp -rp dist.tar root@172.30.103.2:/home/eoop/tools/bbraun-itg/mpc-web/
+  curl https://tower-qas.bbraunchina.cn/hooks/uat-deploy-mpc-web
+  rm -rf dist.tar
+}
+
 mvzip() {
   if [ "$#" -eq 0 ]; then
     echo "Usage: mvzip <version>"
@@ -281,38 +294,70 @@ function isEmpty(){
 }
 
 upload_file() {
+    local file=$(basename "$1")
     local file_path=$(realpath "$1")
+    local remote_path="%2FMac%2FShare%2F$file"
     local expires=$(date -v +1d +%Y-%m-%d)
     local max_downloads=1
     local auto_delete=true
     local auth_token="72LCCXO.NQNB54J-H7K4VHK-J9CQ0G2-B7XV83T"
 
+    local domain='http://openwrt.zp29.net:5244'
+    local token='alist-1c1478bf-93dd-4c07-b1cc-062a51596c03o9LdU8xedrhIumaf7MTDHfh7e8gk7lQFQcYcxro4nShuE3Q3H5wpGTYG8LnoqzpN'
+    
+
     # 打印请求参数
-    # echo "File path: $file_path"
+    echo "File path: $file_path"
+    echo "File name: $file"
     # echo "Expires: $expires"
 
+    local response=$(curl --location --request PUT "$domain/api/fs/form" \
+      --header "Authorization: $token" \
+      --header "File-Path: $remote_path" \
+      --header 'As-Task: true' \
+      -F file="@$file"
+    )
+    local code=$(echo "$response" | jq '.code')
+    # echo "response: $response"
+    echo "code: $code"
+
+    if [[ "$code" == 200 ]]; then
+      local link="$domain/d/$remote_path"
+      echo "link: $link"
+      echo "wget -O ./$file $link" | pbcopy
+      # echo "Upload successful: $response"
+    else
+      echo "Upload failed: $response"
+    fi
+
+  # curl -X 'PUT' "$domain/api/fs/form" -H "File-Path: /tourist/$(basename $file)" -H "Authorization: $token" -F file="@$file"
+    # curl -# -T "$file" "$domain/api/fs/put" -H "File-Path: /Mac/Share/$($file)"
+    # curl -# -O "$domain/d/tourist/$(basename $file)" # wget "$domain/d/tourist/$(basename $file)"
+    # curl -X POST "$domain/api/fs/remove" -d "{\"names\":[\"$(basename $file)\"],\"dir\":\"/tourist\"}" -H 'Content-Type: application/json;charset=UTF-8' \
+    #   -H "Authorization: $token" \
+    #   && echo ''
     # 使用 curl 上传文件并获取返回的 JSON 结果
-    local response=$(curl --location 'https://file.io/' \
-        --header 'accept: application/json' \
-        --header "Authorization: Bearer $auth_token" \
-        --form "file=@\"$file_path\"" \
-        --form "expires=$expires" \
-        --form "maxDownloads=$max_downloads" \
-        --form "autoDelete=$auto_delete")
+    # local response=$(curl --location 'https://file.io/' \
+    #     --header 'accept: application/json' \
+    #     --header "Authorization: Bearer $auth_token" \
+    #     --form "file=@\"$file_path\"" \
+    #     --form "expires=$expires" \
+    #     --form "maxDownloads=$max_downloads" \
+    #     --form "autoDelete=$auto_delete")
 
-    # 打印完整的 JSON 结果以便调试
-    # echo "Response: $response"
+    # # 打印完整的 JSON 结果以便调试
+    # # echo "Response: $response"
 
-    # 解析 JSON 结果并提取 link 和 name 字段
-    local link=$(echo $response | jq -r '.link')
-    local name=$(echo $response | jq -r '.name')
+    # # 解析 JSON 结果并提取 link 和 name 字段
+    # local link=$(echo $response | jq -r '.link')
+    # local name=$(echo $response | jq -r '.name')
 
-    # 拼接结果并打印
-    local result="Link: $link, Name: $name"
-    echo $result
+    # # 拼接结果并打印
+    # local result="Link: $link, Name: $name"
+    # echo $result
 
-    # 将结果复制到剪贴板
-    printf "wget -O ./$name $link" | pbcopy
+    # # 将结果复制到剪贴板
+    # printf "wget -O ./$name $link" | pbcopy
 }
 
 batssh() {
