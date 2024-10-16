@@ -1,6 +1,6 @@
 <template>
   <main>
-    <!-- <TheWelcome /> -->
+    <TheWelcome />
   </main>
 </template>
 

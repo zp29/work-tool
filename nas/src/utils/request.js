@@ -4,7 +4,7 @@ import axios from 'axios';
 const instance = axios.create({
   baseURL: '/api',
   // 指定请求超时的毫秒数
-  timeout: 1000,
+  timeout: 1000 * 60 * 3,
   // 表示跨域请求时是否需要使用凭证
   withCredentials: false,
 });
@@ -19,6 +19,11 @@ instance.interceptors.request.use(
      *  config.headers.token = token
      * }
      */
+    config.headers = {
+      // 'User-Agent': 'Apifox/1.0.0 (https://apifox.com)',
+      'Content-Type': 'application/json',
+    };
+    console.log('request.js config -> ', config)
     return config;
   },
   (error) => {
